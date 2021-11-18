@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Messi",
+        "age": 30,
+        "team": "PSG",
+        "id": 1
+    },
+    {
+        "name": "Benzema",
+        "age": 34,
+        "team": "Madrid",
+        "id": 2
+    },
+    {
+        "name": "Piqué",
+        "age": 33,
+        "team": "Barcelona",
+        "id": 3
+    }
+]
