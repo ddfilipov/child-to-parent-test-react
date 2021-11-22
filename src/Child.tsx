@@ -38,14 +38,14 @@ const CustomCheckbox = styled.div`
         display: inline-block;
         width: 1rem;
         height: 1rem;
-        border: 1px solid #e0e0e0;
+        border: 1px solid black;
     }
     > input:focus + label:before {
         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     }
     > input:checked + label {
         &:before {
-            border-color: blue;
+            border-color: red;
         }
         &:after {
             position: absolute;
@@ -54,12 +54,10 @@ const CustomCheckbox = styled.div`
             content: "";
             width: 1.4rem;
             height: 1.5rem;
-            background-color: #000;
+            background-color: red;
             // x-y
             //                 1x  1y   2x  2y   3x  3y   4x 4y   5x  5y   6x  6y
-            clip-path: polygon(58% 30%, 72% 38%, 44% 88%, 10% 64%, 20% 52%, 38% 65%);
-
-
+            clip-path: polygon(58% 34%, 72% 42%, 44% 92%, 10% 68%, 20% 56%, 38% 69%);
         }
     }
 `;
@@ -73,9 +71,8 @@ export const Child: FC<ChildProps> = ({ player }) => {
                 <li>Team: {player.team}</li>
                 <CustomCheckbox>
                     <input type="checkbox" name={"check" + player.id} id={"check" + player.id} />
-                    <label htmlFor={"check" + player.id}>asd</label>
+                    <label htmlFor={"check" + player.id}></label>
                 </CustomCheckbox>
-                <input type="checkbox" />
             </ul>
         </Container>
     );
