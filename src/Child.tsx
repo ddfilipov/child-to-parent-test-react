@@ -63,6 +63,14 @@ const CustomCheckbox = styled.div`
 `;
 
 export const Child: FC<ChildProps> = ({ player }) => {
+    const checkboxChecked = (e: any) => {
+        const checked = e.target.checked;
+        if (checked) {
+            console.log("check TRUE");
+        } else {
+            console.log("check FLASE");
+        }
+    };
     return (
         <Container>
             <ul>
@@ -70,7 +78,14 @@ export const Child: FC<ChildProps> = ({ player }) => {
                 <li>Age: {player.age}</li>
                 <li>Team: {player.team}</li>
                 <CustomCheckbox>
-                    <input type="checkbox" name={"check" + player.id} id={"check" + player.id} />
+                    <input
+                        type="checkbox"
+                        name={"check" + player.id}
+                        id={"check" + player.id}
+                        onClick={(e) => {
+                            checkboxChecked(e);
+                        }}
+                    />
                     <label htmlFor={"check" + player.id}></label>
                 </CustomCheckbox>
             </ul>
