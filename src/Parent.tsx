@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import players from "./data.json";
 import { Child } from "./Child";
 import styled from "styled-components";
@@ -9,16 +9,23 @@ const Container = styled.div`
 `;
 
 export const Parent = () => {
+    const [selectedPlayers, setSelectedPlayers] = useState(0);
+
+    function updateSelectedPlayers(){
+        setSelectedPlayers(1);
+    }
+
     return (
         <Container>
-            <h2>Jugadores</h2>
+            <h2>Players</h2>
             {players.map((player) => (
                 <Child player={player} key={player.id} />
             ))}
             <div>
-                <label>Nuevo Equipo: </label>
+                <label>New Team: </label>
                 <input type="text"></input>
-                <button>Modificar</button>
+                <button>Modify</button>
+                <span>Players selected: {selectedPlayers}</span>
             </div>
         </Container>
     );
