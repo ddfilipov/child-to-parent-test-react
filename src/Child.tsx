@@ -1,14 +1,14 @@
 import { FC } from "react";
 import styled from "styled-components";
 
-export interface Player {
+interface Player {
     name: string;
     team: string;
     age: number;
     id: number;
 }
 
-export interface ChildProps {
+interface ChildProps {
     playerAttrs: Player;
     selectPlayer(selected: boolean, playerId: number): void;
 }
@@ -68,6 +68,7 @@ export const Child: FC<ChildProps> = ({ playerAttrs, selectPlayer }) => {
         const checked = e.target.checked;
         selectPlayer(checked, playerId);
     };
+
     return (
         <Container>
             <ul>

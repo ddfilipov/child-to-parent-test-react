@@ -9,13 +9,21 @@ const Container = styled.div`
 `;
 
 export const Parent = () => {
-    const [selectedPlayers, setSelectedPlayers] = useState(0);
+    const [selectedPlayers, setSelectedPlayers] = useState<number[]>([]);
+    const [buttonDisabled, setButtonDisabled] = useState(true);
 
     const selectPlayer = (selected: boolean, playerId: number) => {
-        console.log("Hola, entrando en Parent.selectPlayer");
-        console.log(selected);
-        console.log("id jugador que me llega: " + playerId);
+        if (selected) {
+            setSelectedPlayers((oldList) => [...oldList, playerId]);
+        } else {
+            setSelectedPlayers(selectedPlayers.filter((player) => player !== playerId));
+        }
+        console.log(selectedPlayers);
     };
+
+    useEffect(() => {
+        setButtonDisabled(selectedPlayers.length > 0 ? false : true);
+    }, [selectedPlayers]);
 
     return (
         <Container>
@@ -26,8 +34,8 @@ export const Parent = () => {
             <div>
                 <label>New Team: </label>
                 <input type="text"></input>
-                <button>Modify</button>
-                <span>Players selected: {selectedPlayers}</span>
+                <button disabled={buttonDisabled}>Modify</button>
+                <span>Players selected: {selectedPlayers.length}</span>
             </div>
         </Container>
     );
