@@ -26,6 +26,8 @@ export const Parent = () => {
         console.log(selectedPlayers);
     };
 
+    const modifyFirstPlayerTeam = () => {};
+
     useEffect(() => {
         setButtonDisabled(selectedPlayers.length > 0 ? false : true);
     }, [selectedPlayers]);
@@ -39,7 +41,9 @@ export const Parent = () => {
             <div>
                 <label>New Team: </label>
                 <input type="text"></input>
-                <button disabled={buttonDisabled}>Modify</button>
+                <button disabled={buttonDisabled} onClick={modifyFirstPlayerTeam}>
+                    Modify
+                </button>
                 <span>Players selected: {selectedPlayers.length}</span>
             </div>
         </Container>
