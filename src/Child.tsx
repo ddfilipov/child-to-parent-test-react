@@ -8,8 +8,9 @@ export interface Player {
     id: number;
 }
 
-interface ChildProps {
-    player: Player;
+export interface ChildProps {
+    playerAttrs: Player;
+    selectPlayer(selected: boolean, playerId: number): void;
 }
 
 const Container = styled.div`
@@ -62,31 +63,27 @@ const CustomCheckbox = styled.div`
     }
 `;
 
-export const Child: FC<ChildProps> = ({ player }) => {
-    const checkboxChecked = (e: any) => {
+export const Child: FC<ChildProps> = ({ playerAttrs, selectPlayer }) => {
+    const checkboxChecked = (e: any, playerId: number) => {
         const checked = e.target.checked;
-        if (checked) {
-            console.log("check TRUE");
-        } else {
-            console.log("check FLASE");
-        }
+        selectPlayer(checked, playerId);
     };
     return (
         <Container>
             <ul>
-                <li>Name: {player.name}</li>
-                <li>Age: {player.age}</li>
-                <li>Team: {player.team}</li>
+                <li>Name: {playerAttrs.name}</li>
+                <li>Age: {playerAttrs.age}</li>
+                <li>Team: {playerAttrs.team}</li>
                 <CustomCheckbox>
                     <input
                         type="checkbox"
-                        name={"check" + player.id}
-                        id={"check" + player.id}
+                        name={"check" + playerAttrs.id}
+                        id={"check" + playerAttrs.id}
                         onClick={(e) => {
-                            checkboxChecked(e);
+                            checkboxChecked(e, playerAttrs.id);
                         }}
                     />
-                    <label htmlFor={"check" + player.id}></label>
+                    <label htmlFor={"check" + playerAttrs.id}></label>
                 </CustomCheckbox>
             </ul>
         </Container>

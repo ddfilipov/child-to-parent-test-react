@@ -11,15 +11,17 @@ const Container = styled.div`
 export const Parent = () => {
     const [selectedPlayers, setSelectedPlayers] = useState(0);
 
-    function updateSelectedPlayers(){
-        setSelectedPlayers(1);
-    }
+    const selectPlayer = (selected: boolean, playerId: number) => {
+        console.log("Hola, entrando en Parent.selectPlayer");
+        console.log(selected);
+        console.log("id jugador que me llega: " + playerId);
+    };
 
     return (
         <Container>
             <h2>Players</h2>
             {players.map((player) => (
-                <Child player={player} key={player.id} />
+                <Child playerAttrs={player} key={player.id} selectPlayer={selectPlayer} />
             ))}
             <div>
                 <label>New Team: </label>
