@@ -16,6 +16,10 @@ interface ChildProps {
 const Container = styled.div`
     background-color: #f5efef;
     margin: 10px;
+    padding: 10px;
+    span {
+        display: block;
+    }
 `;
 
 const CustomCheckbox = styled.div`
@@ -71,22 +75,20 @@ export const Child: FC<ChildProps> = ({ playerAttrs, selectPlayer }) => {
 
     return (
         <Container>
-            <ul>
-                <li>Name: {playerAttrs.name}</li>
-                <li>Age: {playerAttrs.age}</li>
-                <li>Team: {playerAttrs.team}</li>
-                <CustomCheckbox>
-                    <input
-                        type="checkbox"
-                        name={"check" + playerAttrs.id}
-                        id={"check" + playerAttrs.id}
-                        onClick={(e) => {
-                            checkboxChecked(e, playerAttrs.id);
-                        }}
-                    />
-                    <label htmlFor={"check" + playerAttrs.id}></label>
-                </CustomCheckbox>
-            </ul>
+            <span>Name: {playerAttrs.name}</span>
+            <span>Age: {playerAttrs.age}</span>
+            <span>Team: {playerAttrs.team}</span>
+            <CustomCheckbox>
+                <input
+                    type="checkbox"
+                    name={"check" + playerAttrs.id}
+                    id={"check" + playerAttrs.id}
+                    onClick={(e) => {
+                        checkboxChecked(e, playerAttrs.id);
+                    }}
+                />
+                <label htmlFor={"check" + playerAttrs.id}></label>
+            </CustomCheckbox>
         </Container>
     );
 };

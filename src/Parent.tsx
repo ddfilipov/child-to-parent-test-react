@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
-import players from "./data.json";
 import { Child } from "./Child";
 import styled from "styled-components";
+import Player from "./gateways/player.gateway";
 
 const Container = styled.div`
     border: 1px solid black;
     margin: 10px;
+    padding: 10px;
+    span {
+        display: block;
+    }
 `;
 
 export const Parent = () => {
+    const [players, setPlayers] = useState(Player.getListOfPlayers);
     const [selectedPlayers, setSelectedPlayers] = useState<number[]>([]);
     const [buttonDisabled, setButtonDisabled] = useState(true);
 
