@@ -23,12 +23,15 @@ export const Parent = () => {
         } else {
             setSelectedPlayers(selectedPlayers.filter((player) => player !== playerId));
         }
+        console.log("saliendo de selectPlayer");
         console.log(selectedPlayers);
     };
 
     const modifyFirstPlayerTeam = () => {};
 
     useEffect(() => {
+        console.log("entrando en useEffect")
+        console.log(selectedPlayers);
         setButtonDisabled(selectedPlayers.length > 0 ? false : true);
     }, [selectedPlayers]);
 
