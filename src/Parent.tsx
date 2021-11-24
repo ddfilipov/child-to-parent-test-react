@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Child } from "./Child";
 import styled from "styled-components";
 import Player from "./gateways/player.gateway";
@@ -30,10 +30,15 @@ export const Parent = () => {
     const modifyFirstPlayerTeam = () => {};
 
     useEffect(() => {
-        console.log("entrando en useEffect")
+        console.log("entrando en useEffect");
         console.log(selectedPlayers);
         setButtonDisabled(selectedPlayers.length > 0 ? false : true);
     }, [selectedPlayers]);
+
+    const getPlayerAttrs = useCallback(() => {
+        const player = Player.getPlayerById(4);
+        console.log(player);
+    }, []);
 
     return (
         <Container>
@@ -48,6 +53,7 @@ export const Parent = () => {
                     Modify
                 </button>
                 <span>Players selected: {selectedPlayers.length}</span>
+                <button onClick={getPlayerAttrs}>Test</button>
             </div>
         </Container>
     );

@@ -7,4 +7,13 @@ export default class Player {
         playerList = players;
         return playerList;
     }
+
+    static getPlayerById(id: number) : PlayerDto{
+        return Player.getListOfPlayers().find(player => player.id === id) as PlayerDto;
+    }
+
+    // static updatePlayersTeam(ids : number[]) :PlayerDTO[]{
+    //     //Player.getListOfPlayers().map((player)=>())
+    //     ids.map((id)=>(Player.getPlayerById(id)))
+    // }
 }
