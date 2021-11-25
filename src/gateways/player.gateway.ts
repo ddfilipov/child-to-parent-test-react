@@ -14,6 +14,8 @@ export default class Player {
 
     // static updatePlayersTeam(ids : number[]) :PlayerDTO[]{
     //     //Player.getListOfPlayers().map((player)=>())
-    //     ids.map((id)=>(Player.getPlayerById(id)))
+    //     ids.map((id)=>(Player.getPlayerById(id).team="nuevo equipo"))
+    //     Player.getListOfPlayers()
+    //         .map((player)=>())
     // }
 }
