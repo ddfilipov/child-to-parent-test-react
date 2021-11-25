@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Child } from "./Child";
 import styled from "styled-components";
 import Player from "./gateways/player.gateway";
+import axios from "axios";
 
 const Container = styled.div`
     border: 1px solid black;
@@ -12,10 +13,24 @@ const Container = styled.div`
     }
 `;
 
+const baseURL = "http://localhost:8055/items/players";
+
 export const Parent = () => {
     const [players, setPlayers] = useState(Player.getListOfPlayers);
     const [selectedPlayers, setSelectedPlayers] = useState<number[]>([]);
     const [buttonDisabled, setButtonDisabled] = useState(true);
+
+    const [apiPlayers, setApiPlayers] = useState(null);
+
+    useEffect(() => {
+        axios.get(baseURL).then((response) => {
+            setApiPlayers(response.data.data);
+        });
+    }, []);
+
+    function checkearApi() {
+        console.log(apiPlayers);
+    }
 
     const selectPlayer = (selected: boolean, playerId: number) => {
         if (selected) {
@@ -40,6 +55,7 @@ export const Parent = () => {
         console.log(player);
     }, []);
 
+    if (!apiPlayers) return null;
     return (
         <Container>
             <h2>Players</h2>
@@ -53,7 +69,7 @@ export const Parent = () => {
                     Modify
                 </button>
                 <span>Players selected: {selectedPlayers.length}</span>
-                <button onClick={getPlayerAttrs}>Test</button>
+                <button onClick={checkearApi}>Test</button>
             </div>
         </Container>
     );
